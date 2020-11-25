@@ -13,7 +13,8 @@ export default {
   },
 } as Meta
 
-const Template: Story<ButtonProps> = (args: JSX.IntrinsicAttributes & ButtonProps & { children?: React.ReactNode }) => <Button {...args} />
+const Template: Story<ButtonProps> = (args: JSX.IntrinsicAttributes & ButtonProps & { children?: React.ReactNode }) =>
+  <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {

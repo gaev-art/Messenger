@@ -4,7 +4,7 @@ import {useRoutes} from '../routes'
 
 export const App = () => {
 
-  const routes = useRoutes(false)
+  const routes = useRoutes(true)
 
   return (
     <div className={style.app}>

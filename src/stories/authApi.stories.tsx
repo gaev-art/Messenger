@@ -19,6 +19,7 @@ export const Login = () => {
       setIsLoading(true)
       const response = await instance.post(`/auth/login`, {name, password})
       setState(response.data)
+      localStorage.setItem('my-token', JSON.stringify(response.data))
       setIsLoading(false)
     } catch (error) {
       alert(JSON.stringify(error.response.data.message))
@@ -117,6 +118,7 @@ export const Me = () => {
       setIsLoading(true)
       const response = await instance.post(`/auth/me`, data)
       setState(response.data)
+      localStorage.setItem('my-token', JSON.stringify(response.data))
       setIsLoading(false)
     } catch (error) {
       alert(JSON.stringify(error.response.data.message))

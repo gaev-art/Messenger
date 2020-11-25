@@ -1,0 +1,30 @@
+
+.chatName {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+
+  .text {
+    & span {
+      font-weight: 700;
+    }
+  }
+
+  .date {
+    margin: 10px;
+    @media (max-width: 900px) {
+      display: none;
+
+    }
+  }
+}
+
+.chatAvatar {
+  margin: 0 5px 0;
+}
+
+
+
+
+
