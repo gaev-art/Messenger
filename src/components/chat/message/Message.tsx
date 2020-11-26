@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar/Avatar'
 import {ListItem, ListItemAvatar, ListItemText} from '@material-ui/core'
 import ava from './ava.png'
 
+
 type Props = {
   name: string
   message: string

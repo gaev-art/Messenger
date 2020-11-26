@@ -1,10 +1,12 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
-import {Login} from './components/auth/Login'
 import {Chat} from './components/chat/Chat'
+import {Login} from './components/auth/Login'
 
 
 export const useRoutes = (isAuth: boolean) => {
+
+
   if (isAuth) {
     return (
       <Switch>

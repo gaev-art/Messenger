@@ -12,7 +12,11 @@
   }
 
   .date {
-    margin: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 15px;
+    width: 50px;
     @media (max-width: 900px) {
       display: none;
 

@@ -1,10 +1,13 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppStateType} from '../../redux/store'
+import React, {ChangeEvent, KeyboardEvent, useEffect, useRef, useState} from 'react'
+import {createConnection, destroyConnection, sendMessage, typeMessage} from '../../redux/chatReducer'
 import style from './Chat.module.scss'
 import TextField from '@material-ui/core/TextField/TextField'
-import {NavLink} from 'react-router-dom'
-import {CircularProgress} from '@material-ui/core'
-import {Btn} from '../common/buttom/Button'
 import {Message} from './message/Message'
+import {Btn} from '../common/buttom/Button'
+import {CircularProgress} from '@material-ui/core'
+import {action, isInitializeApp} from '../../redux/authReducer'
 
 
 export type MessageType = {
@@ -22,34 +25,48 @@ export type UserType = {
 
 export const Chat = () => {
 
-  const messages = [
-    {
-      message: 'string',
-      id: 1,
-      addedAt: 'string',
-      user: {
-        id: 'string',
-        name: 'string'
-      }
-    },
-    {
-      message: 'string',
-      id: 2,
-      addedAt: 'string',
-      user: {
-        id: 'string',
-        name: 'string'
-      }
-    },
-  ] as MessageType[]
-  const typingUsers = [] as UserType[]
+  const messages = useSelector((state: AppStateType) => state.chat.messages)
+  const typingUsers = useSelector((state: AppStateType) => state.chat.typingUsers)
+  const dispatch = useDispatch()
 
 
   const [message, setMessage] = useState('')
+  const [isAutoScrollActive, setIsAutoScrollActive] = useState(true)
+  const [lastScrollTop, setLastScrollTop] = useState(0)
 
+  useEffect(() => {
+    if (isAutoScrollActive) {
+      messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth'})
+    }
+  }, [messages, typingUsers, isAutoScrollActive])
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('my-token') as string)
+
+    if (data && data.token) {
+      dispatch(isInitializeApp(data))
+    }
+    dispatch(createConnection())
+    return () => {
+      dispatch(destroyConnection())
+    }
+  }, [])
+
+  const messagesAnchorRef = useRef<HTMLDivElement>(null)
+
+  const scrollMessages = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+    let element = e.currentTarget
+    const maxScrollPosition = element.scrollHeight - element.clientHeight
+    if (element.scrollTop > lastScrollTop && Math.abs(maxScrollPosition - element.scrollTop) < 2) {
+      setIsAutoScrollActive(true)
+    } else {
+      setIsAutoScrollActive(false)
+    }
+    setLastScrollTop(element.scrollTop)
+  }
 
   const sendMessageFunc = () => {
-    alert(message)
+    dispatch(sendMessage(message))
     setMessage('')
   }
 
@@ -71,11 +88,13 @@ export const Chat = () => {
 
   const onChangeTyping = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setMessage(e.currentTarget.value)
-
+    dispatch(typeMessage())
   }
 
   const changeName = () => {
-    alert('logout')
+    dispatch(destroyConnection())
+    dispatch(action.setToken(''))
+    localStorage.removeItem('my-token')
   }
 
   if (!messages) {
@@ -85,25 +104,21 @@ export const Chat = () => {
     </div>
   }
 
-  // if (name === 'unknown') {
-  //   return <Redirect to={`/`}/>
-  // }
-
   return (
     <div className={style.main}>
-      <NavLink to={'/'}>
-        <Btn name={'Change name'} onClickHandler={changeName}/>
-      </NavLink>
-      <div className={style.chatWindow}>
+      <Btn name={'Logout'} onClickHandler={changeName}/>
+      <div className={style.chatWindow} onScroll={scrollMessages}>
         {messageElements}
         {typingUsersElement}
+        <div ref={messagesAnchorRef}/>
       </div>
       <div className={style.messageField}>
-        <TextField
-          label='Enter your message...'
-          value={message}
-          onKeyPress={typeMessageFunc}
-          onChange={onChangeTyping}/>
+        <TextField label='Enter your message...'
+                   variant="outlined"
+                   value={message}
+                   onKeyPress={typeMessageFunc}
+                   onChange={onChangeTyping}
+        />
       </div>
       <Btn name={'Send message'} onClickHandler={sendMessageFunc}/>
     </div>

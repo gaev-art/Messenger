@@ -1,16 +1,17 @@
 import React from 'react'
-import {Button, FormControl, FormGroup, Grid, TextField, Typography} from '@material-ui/core'
+import {FormControl, FormGroup, Grid, TextField, Typography} from '@material-ui/core'
 import {useFormik} from 'formik'
+import {useDispatch} from 'react-redux'
+import {login, registration} from '../../redux/authReducer'
+import {Btn} from '../common/buttom/Button'
+
 
 export const Login = () => {
 
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     validate: (values: { email: string, password: string, name: string }) => {
-      if (!values.email) {
-        return {
-          email: 'Email is required'
-        }
-      }
       if (!values.name) {
         return {
           name: 'Name is required'
@@ -30,9 +31,9 @@ export const Login = () => {
     },
     onSubmit: values => {
       if (!values.isSecondButton) {
-        alert('login')
+        dispatch(login({name: values.name, password: values.password}))
       } else {
-        alert('registration')
+        dispatch(registration({email: values.email, name: values.name, password: values.password}))
       }
     },
   })
@@ -42,45 +43,31 @@ export const Login = () => {
     formik.handleSubmit()
   }
 
-
   return <Grid container style={{
     width: '100%',
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    background: 'rgb(232, 240, 254)'
   }}>
     <form onSubmit={formik.handleSubmit}>
-      <Typography variant="h6">Authentication / Registration</Typography>
+      <Typography style={{margin: '15px'}} variant="h3">Welcome to chat</Typography>
       <FormControl>
         <FormGroup>
-          <TextField
-            label="Email"
-            margin="normal"
-            {...formik.getFieldProps('email')}
-          />
+          <TextField label="Email" margin="normal" variant="outlined"
+                     {...formik.getFieldProps('email')}/>
           {formik.errors.email ? <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
-          <TextField
-            label="Name"
-            margin="normal"
-            {...formik.getFieldProps('name')}
-          />
+          <TextField label="Name" margin="normal" variant="outlined"
+                     {...formik.getFieldProps('name')}/>
           {formik.errors.name ? <div style={{color: 'red'}}>{formik.errors.name}</div> : null}
-          <TextField
-            type="password"
-            label="Password"
-            margin="normal"
-            {...formik.getFieldProps('password')}
-          />
+          <TextField label="Password" margin="normal" variant="outlined" type='password'
+                     {...formik.getFieldProps('password')}/>
           {formik.errors.password ? <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
           <Grid container justify='center' alignItems='center'>
-            <Button style={{margin: '10px'}} onClick={() => handleSubmit(false)}>
-              Login
-            </Button>
-            <Button style={{margin: '10px'}} onClick={() => handleSubmit(true)}>
-              Register
-            </Button>
+            <Btn name='Login' onClickHandler={() => handleSubmit(false)}/>
+            <Btn name='Register' onClickHandler={() => handleSubmit(true)}/>
           </Grid>
         </FormGroup>
       </FormControl>
