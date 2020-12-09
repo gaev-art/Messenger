@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/messenger/static/css/main.e88183dd.chunk.css",
-    "main.js": "/messenger/static/js/main.04538d5e.chunk.js",
-    "main.js.map": "/messenger/static/js/main.04538d5e.chunk.js.map",
-    "runtime-main.js": "/messenger/static/js/runtime-main.452f29c3.js",
-    "runtime-main.js.map": "/messenger/static/js/runtime-main.452f29c3.js.map",
-    "static/js/2.b0ce3601.chunk.js": "/messenger/static/js/2.b0ce3601.chunk.js",
-    "static/js/2.b0ce3601.chunk.js.map": "/messenger/static/js/2.b0ce3601.chunk.js.map",
+    "main.js": "/messenger/static/js/main.5edafa3a.chunk.js",
+    "main.js.map": "/messenger/static/js/main.5edafa3a.chunk.js.map",
+    "runtime-main.js": "/messenger/static/js/runtime-main.68fb1750.js",
+    "runtime-main.js.map": "/messenger/static/js/runtime-main.68fb1750.js.map",
+    "static/js/2.d975ab62.chunk.js": "/messenger/static/js/2.d975ab62.chunk.js",
+    "static/js/2.d975ab62.chunk.js.map": "/messenger/static/js/2.d975ab62.chunk.js.map",
     "index.html": "/messenger/index.html",
-    "precache-manifest.ff1b0aa46a28bb625c74d8b95c3dd402.js": "/messenger/precache-manifest.ff1b0aa46a28bb625c74d8b95c3dd402.js",
+    "precache-manifest.b6c23cf1289eb789e6038e1576bf226d.js": "/messenger/precache-manifest.b6c23cf1289eb789e6038e1576bf226d.js",
     "service-worker.js": "/messenger/service-worker.js",
     "static/css/main.e88183dd.chunk.css.map": "/messenger/static/css/main.e88183dd.chunk.css.map",
-    "static/js/2.b0ce3601.chunk.js.LICENSE.txt": "/messenger/static/js/2.b0ce3601.chunk.js.LICENSE.txt"
+    "static/js/2.d975ab62.chunk.js.LICENSE.txt": "/messenger/static/js/2.d975ab62.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.452f29c3.js",
-    "static/js/2.b0ce3601.chunk.js",
+    "static/js/runtime-main.68fb1750.js",
+    "static/js/2.d975ab62.chunk.js",
     "static/css/main.e88183dd.chunk.css",
-    "static/js/main.04538d5e.chunk.js"
+    "static/js/main.5edafa3a.chunk.js"
   ]
 }
