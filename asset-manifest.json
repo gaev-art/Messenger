@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/messanger/static/css/main.e88183dd.chunk.css",
+    "main.js": "/messanger/static/js/main.a2003691.chunk.js",
+    "main.js.map": "/messanger/static/js/main.a2003691.chunk.js.map",
+    "runtime-main.js": "/messanger/static/js/runtime-main.57692cfa.js",
+    "runtime-main.js.map": "/messanger/static/js/runtime-main.57692cfa.js.map",
+    "static/js/2.95d89c07.chunk.js": "/messanger/static/js/2.95d89c07.chunk.js",
+    "static/js/2.95d89c07.chunk.js.map": "/messanger/static/js/2.95d89c07.chunk.js.map",
+    "index.html": "/messanger/index.html",
+    "precache-manifest.96bc6178e3018ec14e40556e8a9933a9.js": "/messanger/precache-manifest.96bc6178e3018ec14e40556e8a9933a9.js",
+    "service-worker.js": "/messanger/service-worker.js",
+    "static/css/main.e88183dd.chunk.css.map": "/messanger/static/css/main.e88183dd.chunk.css.map",
+    "static/js/2.95d89c07.chunk.js.LICENSE.txt": "/messanger/static/js/2.95d89c07.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57692cfa.js",
+    "static/js/2.95d89c07.chunk.js",
+    "static/css/main.e88183dd.chunk.css",
+    "static/js/main.a2003691.chunk.js"
+  ]
+}
