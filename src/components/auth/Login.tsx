@@ -11,7 +11,7 @@ export const Login = () => {
   const dispatch = useDispatch()
 
   const formik = useFormik({
-    validate: (values: { email: string, password: string, name: string }) => {
+    validate: (values: { password: string, name: string }) => {
       if (!values.name) {
         return {
           name: 'Name is required'
@@ -24,7 +24,6 @@ export const Login = () => {
       }
     },
     initialValues: {
-      email: '',
       password: '',
       name: '',
       isSecondButton: false
@@ -33,7 +32,7 @@ export const Login = () => {
       if (!values.isSecondButton) {
         dispatch(login({name: values.name, password: values.password}))
       } else {
-        dispatch(registration({email: values.email, name: values.name, password: values.password}))
+        dispatch(registration({ name: values.name, password: values.password}))
       }
     },
   })
@@ -56,9 +55,6 @@ export const Login = () => {
       <Typography style={{margin: '15px'}} variant="h3">Welcome to chat</Typography>
       <FormControl>
         <FormGroup>
-          <TextField label="Email" margin="normal" variant="outlined"
-                     {...formik.getFieldProps('email')}/>
-          {formik.errors.email ? <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
           <TextField label="Name" margin="normal" variant="outlined"
                      {...formik.getFieldProps('name')}/>
           {formik.errors.name ? <div style={{color: 'red'}}>{formik.errors.name}</div> : null}

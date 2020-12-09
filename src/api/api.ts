@@ -63,19 +63,22 @@ export type LoginType = {
   name: string
   password: string
 }
+
 export type MeType = {
   token: string
   userId: string
 }
+
 export type RegistrationType = {
   name: string
-  email: string
   password: string
 }
+
 export type ResponseLoginType = {
   token: string
   userId: string
 }
+
 export type ResponseRegistrationType = {
   message: string
 }
