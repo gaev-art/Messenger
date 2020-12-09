@@ -52,7 +52,7 @@ export const Login = () => {
     background: 'rgb(232, 240, 254)'
   }}>
     <form onSubmit={formik.handleSubmit}>
-      <Typography style={{margin: '15px'}} variant="h3">Welcome to chat</Typography>
+      <Typography style={{margin: '15px'}} variant="h3">Welcome!</Typography>
       <FormControl>
         <FormGroup>
           <TextField label="Name" margin="normal" variant="outlined"

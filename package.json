@@ -1,6 +1,6 @@
 {
-  "name": "messanger",
-  "homepage": "https://gaev-art.github.io/messanger",
+  "name": "messenger",
+  "homepage": "https://gaev-art.github.io/messenger",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
