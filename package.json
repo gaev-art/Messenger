@@ -1,6 +1,6 @@
 {
-  "name": "messenger",
-  "homepage": "https://gaev-art.github.io/messenger",
+  "name": "chat",
+  "homepage": "https://gaev-art.github.io/chat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,11 +38,11 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
